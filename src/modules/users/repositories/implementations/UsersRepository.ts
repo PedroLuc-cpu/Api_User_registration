@@ -1,5 +1,5 @@
-import { User } from "../../model/User";
-import { IUsersRepository, ICreateUserDTO } from "../IUsersRepository";
+import { User } from '../../model/User';
+import { IUsersRepository, ICreateUserDTO } from '../IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
   private users: User[];
@@ -20,10 +20,7 @@ class UsersRepository implements IUsersRepository {
 
   create({ name, email }: ICreateUserDTO): User {
     const user = new User();
-    Object.assign(User, {
-      name,
-      email
-    });
+    Object.assign(user, { name, email });
     this.users.push(user);
 
     return user;
@@ -31,11 +28,11 @@ class UsersRepository implements IUsersRepository {
 
   findById(id: string): User | undefined {
     const user = this.users.find(user => user.id === id);
-    return user
+    return user;
   }
 
   findByEmail(email: string): User | undefined {
-    const user = this.users.find(user => user.email === email);
+    const user = this.users.find(user => user.email === email)
     return user;
   }
 
@@ -48,8 +45,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   list(): User[] {
-    return this.users
+    return this.users;
   }
 }
-
 export { UsersRepository };
